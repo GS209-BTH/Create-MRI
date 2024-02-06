@@ -1,10 +1,16 @@
 #Requires -RunAsAdministrator
-## Updated Jan 2 2024
+## Updated Jan 15 2024
 <#
     .SYNOPSIS
-    Yipee
+        This is the basic script for formatting a USB drive and copying data from an ISO file and additional folder to the drive
 #>
 function runDiskPart {
+    <#
+    .SYNOPSIS
+        Function to format USB drives based on "Boots with the Fur"
+    .DESCRIPTION
+        Format
+    #>
     $diskPartParam=@(
         "select disk ${usbDiskNumber}",
         "clean",
@@ -83,3 +89,5 @@ else {
 
 robocopy "${isoDriveLetter}:\\" "${usbDriveLetter}:\\" /DCOPY:T /COPY:DAT /E /R:0
 robocopy "C:\\!Toolz!" "${usbDriveLetter}:\\!Toolz!" /DCOPY:T /COPY:DAT /E /R:0
+
+Read-Host -Prompt "Press Enter to Exit..."
